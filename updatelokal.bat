@@ -1,10 +1,7 @@
 @echo off
-title Auto Git Update - Baileys Project
-color 0A
+title 🚀 Git Push - Upload Baileys Repo
+color 0B
 
-REM ===============================
-REM SETTING DASAR
-REM ===============================
 set REPO_DIR=E:\SC BOT PRIBADI\Baileys
 set GIT_EMAIL=haficdh@gmail.com
 set GIT_NAME=ChandraGO
@@ -13,33 +10,27 @@ set BRANCH=main
 
 echo.
 echo =============================================
-echo   🚀 Updating Repository: %REPO_DIR%
+echo   🚀 Mengirim update dari lokal ke GitHub
+echo   📁 Folder: %REPO_DIR%
 echo =============================================
 echo.
 
-REM Ganti ke direktori repo
 cd /d "%REPO_DIR%"
-
-REM Pastikan identitas git sudah benar
 git config user.email "%GIT_EMAIL%"
 git config user.name "%GIT_NAME%"
-
-REM Tambahkan remote kalau belum ada
 git remote remove origin >nul 2>&1
 git remote add origin %REMOTE_URL%
 
-REM Simpan semua perubahan lokal sebelum pull
-echo 🔄 Menyimpan perubahan lokal...
+echo ✍️  Menyimpan perubahan lokal...
 git add .
-git commit -m "Auto: commit lokal sebelum pull" >nul 2>&1
+git commit -m "Auto: update dari lokal" 
 
-REM Sinkronisasi dengan repo GitHub
-echo 📥 Menarik update dari GitHub...
-git pull origin %BRANCH%
+echo 📤 Mengirim ke GitHub...
+git push -u origin %BRANCH%
 
 echo.
 echo =============================================
-echo   ✅ Proses selesai! Repository sudah update.
+echo   ✅ Perubahan lokal sudah terkirim ke GitHub!
 echo =============================================
 echo.
 pause
